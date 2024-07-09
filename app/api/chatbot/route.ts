@@ -7,7 +7,8 @@ import { NextResponse } from "next/server";
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { createClient } from "@supabase/supabase-js";
-export const maxDuration = 300;
+// export const maxDuration = 300;
+export const maxDuration = 60;
 export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
