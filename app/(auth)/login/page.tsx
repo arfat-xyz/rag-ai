@@ -24,7 +24,7 @@ const LoginPage = () => {
               <FaGithub />
             </Button>
           </div>
-          <form className="flex flex-col">
+          {/* <form className="flex flex-col">
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -39,7 +39,7 @@ const LoginPage = () => {
               name="password"
               id="password"
             />
-          </form>
+          </form> */}
         </div>
       </div>
     </div>
