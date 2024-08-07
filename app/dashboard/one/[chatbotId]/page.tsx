@@ -7,11 +7,11 @@ const Chatbot = ({ params }: { params: { chatbotId: string } }) => {
   const [messages, setMessages] = useState<
     { role: "user" | "ai"; content: string }[]
   >([
-    {
-      role: "user",
-      content: "arfat",
-    },
-    { role: "ai", content: "rahman" },
+    // {
+    //   role: "user",
+    //   content: "arfat",
+    // },
+    // { role: "ai", content: "rahman" },
   ]);
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: any) => {

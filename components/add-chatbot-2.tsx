@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -16,11 +17,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useRef, useState } from "react";
 import { File } from "@prisma/client";
 type SelectFileInterface = { value: string; label: string } & File;
-export function AddChatbotComponent({
-  files,
-}: {
-  files: SelectFileInterface[];
-}) {
+const AddChatbot2Component = ({ files }: { files: SelectFileInterface[] }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [userSelectedFiles, setUserSelectedFiles] = useState<File[]>([]);
   const router = useRouter();
@@ -28,7 +25,7 @@ export function AddChatbotComponent({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
-    const response = await fetch(`/api/chatbot`, {
+    const response = await fetch(`/api/chatbot-2`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,4 +93,5 @@ export function AddChatbotComponent({
       </DialogContent>
     </Dialog>
   );
-}
+};
+export default AddChatbot2Component;

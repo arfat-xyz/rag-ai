@@ -13,7 +13,7 @@ import { Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useRef, useState } from "react";
 
-export function AddPdfComponent() {
+export function AddPdfComponent2() {
   const [fileName, setFileName] = useState<string>("No file selected");
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -33,7 +33,7 @@ export function AddPdfComponent() {
       return;
     }
     const response = await fetch(
-      `/api/upload/pdf-upload?filename=${file.name}`,
+      `/api/upload-2/pdf-upload?filename=${file.name}`,
       {
         method: "POST",
         headers: {

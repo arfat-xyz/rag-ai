@@ -31,6 +31,17 @@ model File {
   @@map("files")
 }
 
+model File2 {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  blobUrl      String
+  userEmail    String
+  openAIFileId String
+  fileName     String
+  createdAt    DateTime @default(now())
+
+  @@map("files2")
+}
+
 model Chatbot {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
@@ -38,4 +49,13 @@ model Chatbot {
   createdAt DateTime @default(now())
 
   @@map("chatbots")
+}
+
+model Chatbot2 {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  userEmail String
+  createdAt DateTime @default(now())
+
+  @@map("chatbots2")
 }

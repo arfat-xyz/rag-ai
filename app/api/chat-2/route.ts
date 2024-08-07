@@ -16,14 +16,14 @@ export async function POST(request: Request) {
   });
   //   Creating 2 template as required
   const standaloneQuestionTemplate = `Given some conversation history (if any) and a question, convert the question to a standalone question. 
-  conversation history: {conv_history}
+    conversation history: {conv_history}
   question: {question} 
   standalone question:`;
-  const answerTemplate = `You are a helpful and friendly support bot who can answer a given question based on the context provided and the conversation history. Try to find the answer in the context. Always speak as if you were chatting to a friend. Please don't try to create answer yourself
+  const answerTemplate = `You are a helpful and friendly support bot who can answer a given question based on the context provided and the conversation history. Try to find the answer in the context. Always speak as if you were chatting to a friend.
   context: {context}
   conversation history: {conv_history}
-  question: {question}
-  answer: `;
+    question: {question}
+    answer: `;
   const answerPrompt = PromptTemplate.fromTemplate(answerTemplate);
   const standaloneQuestionPrompt = PromptTemplate.fromTemplate(
     standaloneQuestionTemplate
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   // creating retriever for getting related data from db
   const retriever = vectorStore.asRetriever();
   const dataExtra = await vectorStore.similaritySearch(input, 3, { chatbotId });
-  console.log(dataExtra, chatbotId, "dataExtra");
+  console.log(dataExtra, "dataExtra");
 
   const standaloneQuestionChain = RunnableSequence.from([
     standaloneQuestionPrompt,
