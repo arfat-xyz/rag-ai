@@ -1,15 +1,12 @@
-import AddChatbot2Component from "@/components/add-chatbot-2";
-import { AddPdfComponent } from "@/components/add-pdf";
-import { AddPdfComponent2 } from "@/components/add-pdf-2";
-import DeleteChatbot2Component from "@/components/delete-chatbot-2";
-import DeletePdfComponent from "@/components/delete-pdf";
-import DeletePdf2Component from "@/components/delete-pdf-2";
+import AddChatbot5Component from "@/components/five-components/add-chatbot-5";
+import { AddPdfComponent5 } from "@/components/five-components/add-pdf-5";
+import DeleteChatbot5Component from "@/components/five-components/delete-chatbot-5";
+import DeletePdf5Component from "@/components/five-components/delete-pdf.5";
 import { authOptions } from "@/lib/auth";
 import { getCurrentUser } from "@/lib/session";
 import prisma from "@/prisma";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import React from "react";
 
 const DashboardTwoPage = async () => {
   const user = await getCurrentUser();
@@ -34,7 +31,7 @@ const DashboardTwoPage = async () => {
           <div className="w-full min-h-24 bg-gray-100  p-4 mt-8 rounded-lg">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl">All uploaded files</h1>{" "}
-              <AddPdfComponent2 />
+              <AddPdfComponent5 />
             </div>
             {files.length === 0 ? (
               <>
@@ -55,7 +52,7 @@ const DashboardTwoPage = async () => {
                         <Link href={file.blobUrl} target="_blank">
                           {file.fileName}
                         </Link>
-                        <DeletePdf2Component
+                        <DeletePdf5Component
                           id={file.id}
                           url={file.blobUrl}
                           openAIFileId={file.openAIFileId}
@@ -73,7 +70,7 @@ const DashboardTwoPage = async () => {
           <div className="w-full min-h-24 bg-gray-100  p-4 mt-8 rounded-lg">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl">All Chatbots</h1>
-              <AddChatbot2Component
+              <AddChatbot5Component
                 files={files.map((f) => ({
                   value: f.id,
                   label: f.fileName,
@@ -100,7 +97,7 @@ const DashboardTwoPage = async () => {
                         <Link href={`/dashboard/two/${bot.id}`}>
                           {bot.name}
                         </Link>
-                        <DeleteChatbot2Component id={bot.id} />
+                        <DeleteChatbot5Component id={bot.id} />
                       </h2>
                       <p className="text-foreground">
                         {bot.createdAt.toLocaleDateString()}

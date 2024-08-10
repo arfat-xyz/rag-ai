@@ -22,24 +22,18 @@ export async function POST(request: Request) {
 
     const chatbot = await prisma.$transaction(
       async (_tx) => {
-        const createChatbot = await prisma.chatbot2.create({
+        const createChatbot = await prisma.chatbot5.create({
           data: { name, userEmail: user?.email! },
         });
         const pdfDocs = await Promise.all(
           files.map(
-            async (f) =>
-              await callSplitPdf(f.blobUrl, createChatbot.id, "chatbotid")
+            async (f) => await callSplitPdf(f.blobUrl, createChatbot.id)
           )
-        ).then((res) =>
-          res.flat().map((d) => {
-            const { id, ...rest } = d;
-            return rest;
-          })
-        );
-        console.log(pdfDocs);
+        ).then((res) => res.flat());
+
         const store = new SupabaseVectorStore(new OpenAIEmbeddings(), {
           client: supabaseClient,
-          tableName: "documents3",
+          tableName: "documents",
         });
         await store.addDocuments(pdfDocs).then((res) => {
           console.log(res, pdfDocs, pdfDocs.length);

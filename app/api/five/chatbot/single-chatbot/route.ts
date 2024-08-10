@@ -12,11 +12,11 @@ export async function DELETE(request: Request) {
       return new Response("Unauthorized", { status: 403 });
     }
     const deleteFromVector = await supabaseClient
-      .from("documents3")
+      .from("documents")
       .delete()
-      .filter("metadata.chatbotid", "eq", id);
+      .filter("metadata.chatbotId", "eq", id);
     console.log(deleteFromVector);
-    await prisma.chatbot2.delete({
+    await prisma.chatbot5.delete({
       where: {
         id: id,
       },

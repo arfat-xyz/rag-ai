@@ -7,6 +7,7 @@ import {
   RunnablePassthrough,
 } from "@langchain/core/runnables";
 import { supabaseClient } from "@/lib/open-ai-functions";
+import prisma from "@/prisma";
 export async function POST(request: Request) {
   const { input, messages, chatbotId } = await request.json();
   const llm = new OpenAI({
@@ -52,7 +53,19 @@ export async function POST(request: Request) {
   // creating retriever for getting related data from db
   const retriever = vectorStore.asRetriever();
   const dataExtra = await vectorStore.similaritySearch(input, 3, { chatbotId });
-  console.log(dataExtra, chatbotId, "dataExtra");
+  console.log(
+    {
+      chatbotId,
+      input,
+      dataExtra: Array.prototype.slice.call(dataExtra, 0),
+    },
+    await prisma.chatbot.findUnique({
+      where: {
+        id: chatbotId,
+      },
+    }),
+    "dataExtra"
+  );
 
   const standaloneQuestionChain = RunnableSequence.from([
     standaloneQuestionPrompt,

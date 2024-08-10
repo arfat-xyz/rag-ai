@@ -52,7 +52,9 @@ export async function POST(request: Request) {
 
   // creating retriever for getting related data from db
   const retriever = vectorStore.asRetriever({
-    filter: { chatbotid: chatbotId },
+    metadata: {
+      chatbotid: chatbotId,
+    },
   });
   const dataExtra = await vectorStore.similaritySearch(input, 1, {
     chatbotid: chatbotId,

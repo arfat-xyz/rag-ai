@@ -17,6 +17,18 @@ const HomePage = () => {
         >
           Second chatbot
         </Link>
+        <Link
+          href={"/dashboard/all-user"}
+          className="px-4 py-2 hover:bg-red-400 transition-colors duration-300 underline rounded-lg"
+        >
+          All users chatbot
+        </Link>
+        <Link
+          href={"/dashboard/socket"}
+          className="px-4 py-2 hover:bg-red-400 transition-colors duration-300 underline rounded-lg"
+        >
+          Socket
+        </Link>
       </div>
     </div>
   );

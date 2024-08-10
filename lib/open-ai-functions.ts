@@ -1,6 +1,10 @@
 import { WebPDFLoader } from "@langchain/community/document_loaders/web/pdf";
 import { createClient } from "@supabase/supabase-js";
-export const callSplitPdf = async (url: string, id: string) => {
+export const callSplitPdf = async (
+  url: string,
+  id: string,
+  chatbotIdFieldName: string = "chatbotId"
+) => {
   const response = await fetch(url);
   const data = await response.blob();
   const loader = new WebPDFLoader(data, {
@@ -8,7 +12,7 @@ export const callSplitPdf = async (url: string, id: string) => {
   });
   return await loader.load().then((res: any[]) =>
     res.map((doc) => {
-      doc.metadata = { ...doc.metadata, chatbotId: id };
+      doc.metadata = { ...doc.metadata, [chatbotIdFieldName]: id };
       doc.chatbotid = id;
       return doc;
     })
