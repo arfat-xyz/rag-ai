@@ -33,7 +33,7 @@ export function AddPdfComponent5() {
       return;
     }
     const response = await fetch(
-      `/api/upload/pdf-upload?filename=${file.name}`,
+      `/api/five//upload/pdf-upload?filename=${file.name}`,
       {
         method: "POST",
         headers: {

@@ -22,7 +22,7 @@ const AddChatbot5Component = ({ files }: { files: SelectFileInterface[] }) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
-    const response = await fetch(`/api/chatbot-5`, {
+    const response = await fetch(`/api/five/chatbot`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

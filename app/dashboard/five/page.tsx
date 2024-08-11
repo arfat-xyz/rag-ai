@@ -13,12 +13,12 @@ const DashboardTwoPage = async () => {
   if (!user?.email) {
     redirect(authOptions?.pages?.signIn || "/login");
   }
-  const files = await prisma.file2.findMany({
+  const files = await prisma.file5.findMany({
     where: {
       userEmail: user?.email,
     },
   });
-  const chatbots = await prisma.chatbot2.findMany({
+  const chatbots = await prisma.chatbot5.findMany({
     where: {
       userEmail: user?.email,
     },
@@ -94,7 +94,7 @@ const DashboardTwoPage = async () => {
                       className="hover:bg-white rounded-lg transition-colors duration-300 py-1 px-2"
                     >
                       <h2 className="text-2xl underline flex justify-between items-center">
-                        <Link href={`/dashboard/two/${bot.id}`}>
+                        <Link href={`/dashboard/five/${bot.id}`}>
                           {bot.name}
                         </Link>
                         <DeleteChatbot5Component id={bot.id} />

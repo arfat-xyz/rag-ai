@@ -16,7 +16,7 @@ const DeletePdf5Component = ({
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDelete = async () => {
     setIsDeleting(true);
-    await fetch(`/api/file-5`, {
+    await fetch(`/api/five/file`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

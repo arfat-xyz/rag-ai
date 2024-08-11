@@ -20,7 +20,7 @@ const Chatbot = ({ params }: { params: { chatbotId: string } }) => {
     const input = e.target.userInput.value;
     setMessages((prev) => [...prev, { role: "user", content: input }]);
     e.target.userInput.value = "";
-    const answer = await fetch("/api/chat-5", {
+    const answer = await fetch("/api/five/chat", {
       method: "POST",
       body: JSON.stringify({
         input,
