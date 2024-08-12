@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     messages: chatMessages,
   });
 
-  // console.log(choices[0].message?.content, similaritySearchResults, messages);
+  console.log(choices, similaritySearchResults, messages);
   // criating conversation history
   // const conv_history = messages
   //   .map((mess: { role: string; content: any }) => {
