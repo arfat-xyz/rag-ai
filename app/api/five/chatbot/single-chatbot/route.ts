@@ -12,7 +12,7 @@ export async function DELETE(request: Request) {
       return new Response("Unauthorized", { status: 403 });
     }
     const deleteFromVector = await supabaseClient
-      .from("documents")
+      .from("documents5_1")
       .delete()
       .filter("metadata.chatbotId", "eq", id);
     console.log(deleteFromVector);

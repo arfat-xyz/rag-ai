@@ -8,7 +8,7 @@ const DeleteChatbot5Component = ({ id }: { id: string }) => {
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDelete = async () => {
     setIsDeleting(true);
-    await fetch(`/api/chatbot-5/single-chatbot`, {
+    await fetch(`/api/five/chatbot/single-chatbot`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

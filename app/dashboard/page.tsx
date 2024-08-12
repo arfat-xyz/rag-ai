@@ -24,13 +24,13 @@ const HomePage = () => {
     },
   ];
   return (
-    <div className="w-full h-[calc(100vh-40px)] flex justify-center items-center">
-      <div className="min-h-24 min-w-40 bg-slate-100 grid grid-cols-1 md:grid-cols-2 gap-8 rounded-lg ">
+    <div className="w-full h-[calc(100vh-40px)] flex justify-center items-center ">
+      <div className="min-h-24 min-w-40 bg-slate-100 grid grid-cols-1 md:grid-cols-2 gap-8 rounded-lg dark:bg-gray-700 dark:text-customSecondary">
         {allRoutes.map((singleRoute, i) => (
           <Link
             key={i}
             href={singleRoute.href}
-            className="px-4 py-2 hover:bg-red-400 transition-colors duration-300 underline rounded-lg"
+            className="px-4 py-2 hover:bg-red-400 hover:text-white transition-colors duration-300 underline rounded-lg"
           >
             {singleRoute.name}
           </Link>

@@ -14,7 +14,7 @@ const LoginPage = () => {
     <div className="w-full h-screen flex justify-center items-center">
       <div className=" lg:max-w-largeScreen">
         <div className="w-full md:w-96 bg-gray-300 px-3 py-8 rounded-lg">
-          <h1 className="text-2xl text-center">Login</h1>
+          <h1 className="text-2xl text-center dark:text-black">Login</h1>
           <div className="flex justify-center gap-4">
             {" "}
             <Button onClick={() => signIn("google")}>

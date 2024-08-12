@@ -31,13 +31,13 @@ export async function POST(request: Request) {
           )
         ).then((res) => res.flat());
 
-        const store = new SupabaseVectorStore(new OpenAIEmbeddings(), {
-          client: supabaseClient,
-          tableName: "documents",
-        });
-        await store.addDocuments(pdfDocs).then((res) => {
-          console.log(res, pdfDocs, pdfDocs.length);
-        });
+        // const store = new SupabaseVectorStore(new OpenAIEmbeddings(), {
+        //   client: supabaseClient,
+        //   tableName: "documents5_1",
+        // });
+        // await store.addDocuments(pdfDocs).then((res) => {
+        //   console.log(res, pdfDocs, pdfDocs.length);
+        // });
         // const store2 = new SupabaseVectorStore(new OpenAIEmbeddings(), {
         //   client: supabaseClient,
         //   tableName: "documents",
@@ -46,6 +46,20 @@ export async function POST(request: Request) {
         //     chatbotId: createChatbot.id,
         //   },
         // });
+
+        // Create opean ai embeddings
+        const embeddings = new OpenAIEmbeddings({
+          model: "text-embedding-3-small",
+        });
+
+        // create vector store using embeddings
+        const vectorStore = new SupabaseVectorStore(embeddings, {
+          client: supabaseClient,
+          tableName: "documents5_1",
+          queryName: "match_documents5_1",
+        });
+
+        vectorStore.addDocuments(pdfDocs);
         return createChatbot;
       },
       {
@@ -56,7 +70,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ...chatbot, success: true }, { status: 201 });
   } catch (error) {
-    console.error(error);
+    console.error("error", error);
 
     return new Response(null, { status: 500 });
   }
