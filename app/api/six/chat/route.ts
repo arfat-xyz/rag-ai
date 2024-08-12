@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       content: `
       You are an helpful assistant who help user to answer questions according to {Context} given in {Question}. 
       If you are unsure and cannot find the answer in the {Context}, say, "Sorry, I don't know the answer." 
-      Please do not make up the answer. Please remember preious messages to answer more accurately`,
+      Please do not make up the answer. Also ensure word case-sensitive`,
     },
   ];
   chatMessages.push(...messages);
