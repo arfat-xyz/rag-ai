@@ -61,19 +61,41 @@ export async function POST(request: Request) {
     {
       role: "system",
       content: `
-      You are an helpful assistant who help user to answer questions according to {Context} given in {Question}. 
-      If you are unsure and cannot find the answer in the {Context}, say, "Sorry, I don't know the answer." 
-      Please do not make up the answer. Please remember preious messages to answer more accurately`,
+      You are an helpful assistant who help user to answer questions according to {Context} given in {Question}.
+      If you are unsure and cannot find the answer in the {Context}  say, "Sorry, I don't know the answer."
+      If someone ask any questions which out of {Context} even it's a chilly {Question} and ask multiple times do not answer it, say, "Sorry, This is not in my knowledge"
+      Please remember previous messages to answer more effeciently but not out of .
+      Please do not make up the answer.
+      Please answer on that language which user ask`,
     },
   ];
+
+  //   // Use OpenAI to make the response conversational from chatgpt
+  //   const chatMessages: ChatCompletionMessageParam[] = [
+  //     {
+  //       role: "system",
+  //       content: `
+  //     You are a helpful assistant tasked with answering questions based primarily on the {Context} provided in the {Question}.
+
+  // - Your priority is to find answers within the {Context}. If the information is not explicitly available, respond with, "Sorry, I don't know the answer."
+  // - If the question seems unrelated to the {Context}, gently steer the conversation back by saying, "This topic is not covered in the provided context."
+  // - Avoid providing detailed answers to questions that are clearly outside the {Context}, but you can acknowledge them briefly if relevant.
+  // - Do not make up answers or provide speculative information; rely on the {Context} wherever possible.
+
+  // Please respond in the language in which the user asks the question.
+
+  // `,
+  //     },
+  //   ];
   chatMessages.push(...messages);
   chatMessages.push({
     role: "user",
     content: `Context: ${similaritySearchResults} Question: ${input}`,
   });
-  const { choices } = await llm.chat.completions.create({
+  const choices = await llm.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: chatMessages,
+    temperature: 0.5,
   });
 
   console.log(choices, similaritySearchResults, messages);
@@ -109,5 +131,5 @@ export async function POST(request: Request) {
   //   return data[0].content;
   // }
 
-  return Response.json({ answer: choices[0].message?.content });
+  return Response.json({ answer: choices?.choices[0].message?.content });
 }

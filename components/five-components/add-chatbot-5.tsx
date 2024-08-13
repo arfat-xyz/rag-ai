@@ -69,6 +69,7 @@ const AddChatbot5Component = ({ files }: { files: SelectFileInterface[] }) => {
             components={animatedComponents}
             defaultValue={[]}
             required={true}
+            className="dark:text-black"
             onChange={(choice) =>
               setUserSelectedFiles(() => {
                 return (choice as SelectFileInterface[]).map((f) => {
