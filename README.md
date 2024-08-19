@@ -5,6 +5,9 @@ pnpm i
 pnpm run dev
 ```
 
+## Supabase vector 
+Arfatpciu@gmail.com
+
 ## chatbot 2.1
 
 It's working with retriver.
