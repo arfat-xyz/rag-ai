@@ -19,29 +19,30 @@ export async function DELETE(request: Request) {
     //   .filter("metadata.chatbotId", "eq", id);
     // console.log(deleteFromVector);
 
-
-   // Create opean ai embeddings
-   const embeddings = new OpenAIEmbeddings({
-    model: "text-embedding-3-small",
-  });
-    // create vector store using embeddings
-    const vectorStore = new SupabaseVectorStore(embeddings, {
-      client: supabaseClient,
-      tableName: "documents5_1",
-      queryName: "match_documents5_1",
-    });
-    const { data, error } = await supabaseClient
-    .from('documents5_1') // Replace with your actual table name
-    .select('id')          // Use '*' to select all columns
-    .contains('metadata', { "chatbotId": id }); // JSONB filter
-  
-
-    console.log(data, error, id);
-    // await prisma.chatbot5.delete({
-    //   where: {
-    //     id: id,
-    //   },
+    //  // Create opean ai embeddings
+    //  const embeddings = new OpenAIEmbeddings({
+    //   model: "text-embedding-3-small",
     // });
+    //   // create vector store using embeddings
+    //   const vectorStore = new SupabaseVectorStore(embeddings, {
+    //     client: supabaseClient,
+    //     tableName: "documents5_1",
+    //     queryName: "match_documents5_1",
+    //   });
+
+    // deleteting data from vector DB of supabase
+    const { data, error } = await supabaseClient
+      .from("documents5_1") // Replace with your actual table name
+      // .select('id')
+      .delete() // Use '*' to select all columns
+      .contains("metadata", { chatbotId: id }); // JSONB filter
+
+    console.log({ id, data, error });
+    await prisma.chatbot5.delete({
+      where: {
+        id: id,
+      },
+    });
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {

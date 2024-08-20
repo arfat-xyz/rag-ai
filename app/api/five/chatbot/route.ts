@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
     const chatbot = await prisma.$transaction(
       async (_tx) => {
-        const createChatbot = await prisma.chatbot5.create({
+        const createChatbot = await _tx.chatbot5.create({
           data: { name, userEmail: user?.email! },
         });
         const pdfDocs = await Promise.all(
@@ -30,7 +30,6 @@ export async function POST(request: Request) {
             async (f) => await callSplitPdf(f.blobUrl, createChatbot.id)
           )
         ).then((res) => res.flat());
-
         // const store = new SupabaseVectorStore(new OpenAIEmbeddings(), {
         //   client: supabaseClient,
         //   tableName: "documents5_1",
@@ -59,8 +58,12 @@ export async function POST(request: Request) {
           queryName: "match_documents5_1",
         });
 
-        vectorStore.addDocuments(pdfDocs);
-        return createChatbot;
+        const storedDataIdArray = await vectorStore.addDocuments(pdfDocs);
+        if (storedDataIdArray.length > 0) {
+          return createChatbot;
+        } else {
+          throw new Error("Data not stored in DB", { cause: "hudai" });
+        }
       },
       {
         maxWait: 5000, // default: 2000
