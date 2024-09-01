@@ -13,7 +13,7 @@ import { Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useRef, useState } from "react";
 
-export function AddPdfComponent5() {
+export function AddPdfComponentDynamic({ value }: { value: string }) {
   const [fileName, setFileName] = useState<string>("No file selected");
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -32,16 +32,13 @@ export function AddPdfComponent5() {
       setIsSaving(false);
       return;
     }
-    const response = await fetch(
-      `/api/five/upload/pdf-upload?filename=${file.name}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: file,
-      }
-    )
+    await fetch(`/api/${value}/upload/pdf-upload?filename=${file.name}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: file,
+    })
       .then((res) => res.json())
       .catch((e) => {
         console.log({ e });
@@ -64,7 +61,7 @@ export function AddPdfComponent5() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default">Add Pdf</Button>
+        <Button variant="default">Add Pdf {value}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

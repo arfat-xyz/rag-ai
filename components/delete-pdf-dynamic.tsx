@@ -1,19 +1,29 @@
 "use client";
-import { Trash } from "lucide-react";
+import { Circle, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const DeleteChatbot5Component = ({ id }: { id: string }) => {
+const DeletePdfComponentDynamic = ({
+  url,
+  id,
+  openAIFileId,
+  value,
+}: {
+  url: string;
+  id: string;
+  openAIFileId: string;
+  value: string;
+}) => {
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDelete = async () => {
     setIsDeleting(true);
-    await fetch(`/api/five/chatbot/single-chatbot`, {
+    await fetch(`/api/${value}/file`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ url, id, openAIFileId }),
     })
       .then((res) => res.json())
       .then(({ success }: { success: boolean }) => {
@@ -34,4 +44,4 @@ const DeleteChatbot5Component = ({ id }: { id: string }) => {
   );
 };
 
-export default DeleteChatbot5Component;
+export default DeletePdfComponentDynamic;

@@ -3,12 +3,18 @@ import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const DeleteChatbot5Component = ({ id }: { id: string }) => {
+const DeleteChatbotComponentDynamic = ({
+  id,
+  value,
+}: {
+  id: string;
+  value: string;
+}) => {
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDelete = async () => {
     setIsDeleting(true);
-    await fetch(`/api/five/chatbot/single-chatbot`, {
+    await fetch(`/api/${value}/chatbot/single-chatbot`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -34,4 +40,4 @@ const DeleteChatbot5Component = ({ id }: { id: string }) => {
   );
 };
 
-export default DeleteChatbot5Component;
+export default DeleteChatbotComponentDynamic;

@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@langchain/community':
         specifier: ^0.2.17
-        version: 0.2.17(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)
+        version: 0.2.17(@pinecone-database/pinecone@2.2.2)(@supabase/postgrest-js@1.15.7)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)
       '@langchain/core':
         specifier: ^0.2.14
-        version: 0.2.14(langchain@0.2.8)(openai@4.52.3)
+        version: 0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       '@langchain/openai':
         specifier: ^0.2.1
-        version: 0.2.1(langchain@0.2.8)
+        version: 0.2.1(encoding@0.1.13)(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))
       '@pinecone-database/pinecone':
         specifier: ^2.2.2
         version: 2.2.2
@@ -25,10 +25,10 @@ importers:
         version: 5.16.1(prisma@5.16.1)
       '@radix-ui/react-dialog':
         specifier: ^1.1.1
-        version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+        version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.1.1
-        version: 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+        version: 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
@@ -40,7 +40,7 @@ importers:
         version: 0.23.4
       bcrypt:
         specifier: ^5.1.1
-        version: 5.1.1
+        version: 5.1.1(encoding@0.1.13)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -52,7 +52,7 @@ importers:
         version: 0.13.0
       langchain:
         specifier: ^0.2.8
-        version: 0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)
+        version: 0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)
       lucide-react:
         specifier: ^0.400.0
         version: 0.400.0(react@18.3.1)
@@ -64,16 +64,16 @@ importers:
         version: 2.0.0(react@18.3.1)
       next:
         specifier: 14.2.4
-        version: 14.2.4(react-dom@18.3.1)(react@18.3.1)
+        version: 14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-auth:
         specifier: ^4.24.7
-        version: 4.24.7(next@14.2.4)(react-dom@18.3.1)(react@18.3.1)
+        version: 4.24.7(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes:
         specifier: ^0.3.0
-        version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
+        version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       openai:
         specifier: ^4.52.3
-        version: 4.52.3
+        version: 4.52.3(encoding@0.1.13)
       pdf-parse:
         specifier: ^1.1.1
         version: 1.1.1
@@ -91,7 +91,7 @@ importers:
         version: 9.0.1(@types/react@18.3.3)(react@18.3.1)
       react-select:
         specifier: ^5.8.0
-        version: 5.8.0(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+        version: 5.8.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
@@ -111,6 +111,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      daisyui:
+        specifier: ^4.12.10
+        version: 4.12.10(postcss@8.4.39)
       eslint:
         specifier: ^8
         version: 8.57.0
@@ -1519,6 +1522,9 @@ packages:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
 
+  css-selector-tokenizer@0.8.0:
+    resolution: {integrity: sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==}
+
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
@@ -1526,6 +1532,14 @@ packages:
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  culori@3.3.0:
+    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  daisyui@4.12.10:
+    resolution: {integrity: sha512-jp1RAuzbHhGdXmn957Z2XsTZStXGHzFfF0FgIOZj3Wv9sH7OZgLfXTRZNfKVYxltGUOBsG1kbWAdF5SrqjebvA==}
+    engines: {node: '>=16.9.0'}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -1813,6 +1827,9 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  fastparse@1.1.2:
+    resolution: {integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==}
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
@@ -3811,9 +3828,10 @@ snapshots:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.3.1)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
-      '@types/react': 18.3.3
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
     transitivePeerDependencies:
       - supports-color
 
@@ -3871,7 +3889,7 @@ snapshots:
       '@floating-ui/core': 1.6.4
       '@floating-ui/utils': 0.2.4
 
-  '@floating-ui/react-dom@2.1.1(react-dom@18.3.1)(react@18.3.1)':
+  '@floating-ui/react-dom@2.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@floating-ui/dom': 1.6.7
       react: 18.3.1
@@ -3917,22 +3935,26 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@langchain/community@0.2.17(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)':
+  '@langchain/community@0.2.17(@pinecone-database/pinecone@2.2.2)(@supabase/postgrest-js@1.15.7)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
-      '@langchain/openai': 0.1.3(langchain@0.2.3)
-      '@pinecone-database/pinecone': 2.2.2
-      '@supabase/supabase-js': 2.44.2
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
+      '@langchain/openai': 0.1.3(encoding@0.1.13)(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))
       binary-extensions: 2.3.0
       expr-eval: 2.0.2
       flat: 5.0.2
       js-yaml: 4.1.0
-      langchain: 0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)
-      langsmith: 0.1.36(@langchain/core@0.2.14)(langchain@0.2.3)(openai@4.52.3)
-      pdf-parse: 1.1.1
+      langchain: 0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)
+      langsmith: 0.1.36(@langchain/core@0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       uuid: 9.0.1
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
+    optionalDependencies:
+      '@pinecone-database/pinecone': 2.2.2
+      '@supabase/postgrest-js': 1.15.7
+      '@supabase/supabase-js': 2.44.2
+      ignore: 5.3.1
+      pdf-parse: 1.1.1
+      ws: 8.18.0
     transitivePeerDependencies:
       - '@gomomento/sdk-web'
       - axios
@@ -3943,13 +3965,13 @@ snapshots:
       - peggy
       - pyodide
 
-  '@langchain/core@0.2.14(langchain@0.2.3)(openai@4.52.3)':
+  '@langchain/core@0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.36(@langchain/core@0.2.14)(langchain@0.2.3)(openai@4.52.3)
+      langsmith: 0.1.36(@langchain/core@0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -3961,13 +3983,13 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/core@0.2.14(langchain@0.2.8)(openai@4.52.3)':
+  '@langchain/core@0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.36(@langchain/core@0.2.14)(langchain@0.2.8)(openai@4.52.3)
+      langsmith: 0.1.36(@langchain/core@0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -3979,56 +4001,56 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/openai@0.0.34(langchain@0.2.3)':
+  '@langchain/openai@0.0.34(encoding@0.1.13)(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       js-tiktoken: 1.0.12
-      openai: 4.52.3
+      openai: 4.52.3(encoding@0.1.13)
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/openai@0.1.3(langchain@0.2.3)':
+  '@langchain/openai@0.1.3(encoding@0.1.13)(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       js-tiktoken: 1.0.12
-      openai: 4.52.3
+      openai: 4.52.3(encoding@0.1.13)
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/openai@0.2.1(langchain@0.2.8)':
+  '@langchain/openai@0.2.1(encoding@0.1.13)(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.8)(openai@4.52.3)
+      '@langchain/core': 0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       js-tiktoken: 1.0.12
-      openai: 4.52.3
+      openai: 4.52.3(encoding@0.1.13)
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/textsplitters@0.0.3(langchain@0.2.3)(openai@4.52.3)':
+  '@langchain/textsplitters@0.0.3(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
       - openai
 
-  '@langchain/textsplitters@0.0.3(langchain@0.2.8)(openai@4.52.3)':
+  '@langchain/textsplitters@0.0.3(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))':
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.8)(openai@4.52.3)
+      '@langchain/core': 0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
       - openai
 
-  '@mapbox/node-pre-gyp@1.0.11':
+  '@mapbox/node-pre-gyp@1.0.11(encoding@0.1.13)':
     dependencies:
       detect-libc: 2.0.3
       https-proxy-agent: 5.0.1
@@ -4101,7 +4123,7 @@ snapshots:
     optional: true
 
   '@prisma/client@5.16.1(prisma@5.16.1)':
-    dependencies:
+    optionalDependencies:
       prisma: 5.16.1
 
   '@prisma/debug@5.16.1': {}
@@ -4127,231 +4149,255 @@ snapshots:
 
   '@radix-ui/primitive@1.1.0': {}
 
-  '@radix-ui/react-arrow@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-arrow@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-collection@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-collection@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-compose-refs@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-context@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-dialog@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-dialog@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-dismissable-layer': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-dismissable-layer': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-focus-guards': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-focus-scope': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-focus-scope': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-id': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-portal': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-portal': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       aria-hidden: 1.2.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-remove-scroll: 2.5.7(@types/react@18.3.3)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-direction@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-dismissable-layer@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-dismissable-layer@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-escape-keydown': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-dropdown-menu@2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-dropdown-menu@2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-id': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-menu': 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-menu': 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-focus-guards@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-focus-scope@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-focus-scope@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-id@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  '@radix-ui/react-menu@2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-menu@2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
-      '@radix-ui/react-collection': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-collection': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-direction': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-dismissable-layer': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-dismissable-layer': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-focus-guards': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-focus-scope': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-focus-scope': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-id': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-popper': 1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-portal': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-roving-focus': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-popper': 1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-portal': 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-presence': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-roving-focus': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       aria-hidden: 1.2.4
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-remove-scroll: 2.5.7(@types/react@18.3.3)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-popper@1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-popper@1.2.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.1(react-dom@18.3.1)(react@18.3.1)
-      '@radix-ui/react-arrow': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@floating-ui/react-dom': 2.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-arrow': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-rect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-size': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/rect': 1.1.0
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-portal@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-portal@1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-presence@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-presence@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-primitive@2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-primitive@2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
-  '@radix-ui/react-roving-focus@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)':
+  '@radix-ui/react-roving-focus@1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/primitive': 1.1.0
-      '@radix-ui/react-collection': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-collection': 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-context': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-direction': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-id': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
       '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
-      '@types/react-dom': 18.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-slot@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-callback-ref@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-controllable-state@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-escape-keydown@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-layout-effect@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-rect@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/rect': 1.1.0
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/react-use-size@1.1.0(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
       '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@18.3.3)(react@18.3.1)
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   '@radix-ui/rect@1.1.0': {}
 
@@ -4486,6 +4532,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 7.2.0
       debug: 4.3.5
       eslint: 8.57.0
+    optionalDependencies:
       typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
@@ -4507,6 +4554,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.2
       ts-api-utils: 1.3.0(typescript@5.5.3)
+    optionalDependencies:
       typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
@@ -4708,9 +4756,9 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  bcrypt@5.1.1:
+  bcrypt@5.1.1(encoding@0.1.13):
     dependencies:
-      '@mapbox/node-pre-gyp': 1.0.11
+      '@mapbox/node-pre-gyp': 1.0.11(encoding@0.1.13)
       node-addon-api: 5.1.0
     transitivePeerDependencies:
       - encoding
@@ -4852,9 +4900,25 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
+  css-selector-tokenizer@0.8.0:
+    dependencies:
+      cssesc: 3.0.0
+      fastparse: 1.1.2
+
   cssesc@3.0.0: {}
 
   csstype@3.1.3: {}
+
+  culori@3.3.0: {}
+
+  daisyui@4.12.10(postcss@8.4.39):
+    dependencies:
+      css-selector-tokenizer: 0.8.0
+      culori: 3.3.0
+      picocolors: 1.0.1
+      postcss-js: 4.0.1(postcss@8.4.39)
+    transitivePeerDependencies:
+      - postcss
 
   damerau-levenshtein@1.0.8: {}
 
@@ -5094,11 +5158,12 @@ snapshots:
       '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.5.3)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.34.3(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
+    optionalDependencies:
       typescript: 5.5.3
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -5112,13 +5177,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0):
+  eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 4.3.5
       enhanced-resolve: 5.17.0
       eslint: 8.57.0
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.5
       is-core-module: 2.14.0
@@ -5129,19 +5194,19 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
-      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.5.3)
       debug: 3.2.7
+    optionalDependencies:
+      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.5.3)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
-      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.5.3)
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
       array.prototype.flat: 1.3.2
@@ -5150,7 +5215,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.14.0
       is-glob: 4.0.3
@@ -5160,6 +5225,8 @@ snapshots:
       object.values: 1.2.0
       semver: 6.3.1
       tsconfig-paths: 3.15.0
+    optionalDependencies:
+      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.5.3)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -5302,6 +5369,8 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
+
+  fastparse@1.1.2: {}
 
   fastq@1.17.1:
     dependencies:
@@ -5758,79 +5827,87 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1):
+  langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0):
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
-      '@langchain/openai': 0.0.34(langchain@0.2.3)
-      '@langchain/textsplitters': 0.0.3(langchain@0.2.3)(openai@4.52.3)
-      '@pinecone-database/pinecone': 2.2.2
-      '@supabase/supabase-js': 2.44.2
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
+      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))
+      '@langchain/textsplitters': 0.0.3(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.36(@langchain/core@0.2.14)(langchain@0.2.3)(openai@4.52.3)
+      langsmith: 0.1.36(@langchain/core@0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
-      pdf-parse: 1.1.1
       uuid: 9.0.1
       yaml: 2.4.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
+    optionalDependencies:
+      '@pinecone-database/pinecone': 2.2.2
+      '@supabase/supabase-js': 2.44.2
+      ignore: 5.3.1
+      pdf-parse: 1.1.1
+      ws: 8.18.0
     transitivePeerDependencies:
       - encoding
       - openai
 
-  langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1):
+  langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0):
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.8)(openai@4.52.3)
-      '@langchain/openai': 0.2.1(langchain@0.2.8)
-      '@langchain/textsplitters': 0.0.3(langchain@0.2.8)(openai@4.52.3)
-      '@pinecone-database/pinecone': 2.2.2
-      '@supabase/supabase-js': 2.44.2
+      '@langchain/core': 0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
+      '@langchain/openai': 0.2.1(encoding@0.1.13)(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))
+      '@langchain/textsplitters': 0.0.3(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.36(@langchain/core@0.2.14)(langchain@0.2.8)(openai@4.52.3)
+      langsmith: 0.1.36(@langchain/core@0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
-      pdf-parse: 1.1.1
       uuid: 9.0.1
       yaml: 2.4.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
+    optionalDependencies:
+      '@pinecone-database/pinecone': 2.2.2
+      '@supabase/supabase-js': 2.44.2
+      ignore: 5.3.1
+      pdf-parse: 1.1.1
+      ws: 8.18.0
     transitivePeerDependencies:
       - encoding
       - openai
 
   langchainhub@0.0.11: {}
 
-  langsmith@0.1.36(@langchain/core@0.2.14)(langchain@0.2.3)(openai@4.52.3):
+  langsmith@0.1.36(@langchain/core@0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)):
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.3)(openai@4.52.3)
       '@types/uuid': 9.0.8
       commander: 10.0.1
-      langchain: 0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)
-      openai: 4.52.3
       p-queue: 6.6.2
       p-retry: 4.6.2
       uuid: 9.0.1
+    optionalDependencies:
+      '@langchain/core': 0.2.14(langchain@0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
+      langchain: 0.2.3(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)
+      openai: 4.52.3(encoding@0.1.13)
 
-  langsmith@0.1.36(@langchain/core@0.2.14)(langchain@0.2.8)(openai@4.52.3):
+  langsmith@0.1.36(@langchain/core@0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)))(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13)):
     dependencies:
-      '@langchain/core': 0.2.14(langchain@0.2.8)(openai@4.52.3)
       '@types/uuid': 9.0.8
       commander: 10.0.1
-      langchain: 0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(openai@4.52.3)(pdf-parse@1.1.1)
-      openai: 4.52.3
       p-queue: 6.6.2
       p-retry: 4.6.2
       uuid: 9.0.1
+    optionalDependencies:
+      '@langchain/core': 0.2.14(langchain@0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0))(openai@4.52.3(encoding@0.1.13))
+      langchain: 0.2.8(@pinecone-database/pinecone@2.2.2)(@supabase/supabase-js@2.44.2)(encoding@0.1.13)(ignore@5.3.1)(openai@4.52.3(encoding@0.1.13))(pdf-parse@1.1.1)(ws@8.18.0)
+      openai: 4.52.3(encoding@0.1.13)
 
   language-subtag-registry@0.3.23: {}
 
@@ -6187,13 +6264,13 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next-auth@4.24.7(next@14.2.4)(react-dom@18.3.1)(react@18.3.1):
+  next-auth@4.24.7(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.24.7
       '@panva/hkdf': 1.2.1
       cookie: 0.5.0
       jose: 4.15.9
-      next: 14.2.4(react-dom@18.3.1)(react@18.3.1)
+      next: 14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       oauth: 0.9.15
       openid-client: 5.6.5
       preact: 10.11.3
@@ -6202,12 +6279,12 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       uuid: 8.3.2
 
-  next-themes@0.3.0(react-dom@18.3.1)(react@18.3.1):
+  next-themes@0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next@14.2.4(react-dom@18.3.1)(react@18.3.1):
+  next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 14.2.4
       '@swc/helpers': 0.5.5
@@ -6240,8 +6317,9 @@ snapshots:
 
   node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
-      encoding: 0.1.13
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
   nopt@5.0.0:
     dependencies:
@@ -6319,7 +6397,7 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  openai@4.52.3:
+  openai@4.52.3(encoding@0.1.13):
     dependencies:
       '@types/node': 18.19.39
       '@types/node-fetch': 2.6.11
@@ -6445,8 +6523,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.39):
     dependencies:
       lilconfig: 3.1.2
-      postcss: 8.4.39
       yaml: 2.4.5
+    optionalDependencies:
+      postcss: 8.4.39
 
   postcss-nested@6.0.1(postcss@8.4.39):
     dependencies:
@@ -6530,22 +6609,24 @@ snapshots:
 
   react-remove-scroll-bar@2.3.6(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
       react-style-singleton: 2.2.1(@types/react@18.3.3)(react@18.3.1)
       tslib: 2.6.3
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   react-remove-scroll@2.5.7(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
       react-remove-scroll-bar: 2.3.6(@types/react@18.3.3)(react@18.3.1)
       react-style-singleton: 2.2.1(@types/react@18.3.3)(react@18.3.1)
       tslib: 2.6.3
       use-callback-ref: 1.3.2(@types/react@18.3.3)(react@18.3.1)
       use-sidecar: 1.1.2(@types/react@18.3.3)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  react-select@5.8.0(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):
+  react-select@5.8.0(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.24.7
       '@emotion/cache': 11.11.0
@@ -6556,7 +6637,7 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-transition-group: 4.4.5(react-dom@18.3.1)(react@18.3.1)
+      react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.3.3)(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
@@ -6564,13 +6645,14 @@ snapshots:
 
   react-style-singleton@2.2.1(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
       tslib: 2.6.3
+    optionalDependencies:
+      '@types/react': 18.3.3
 
-  react-transition-group@4.4.5(react-dom@18.3.1)(react@18.3.1):
+  react-transition-group@4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.24.7
       dom-helpers: 5.2.1
@@ -7020,21 +7102,24 @@ snapshots:
 
   use-callback-ref@1.3.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
       tslib: 2.6.3
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   use-isomorphic-layout-effect@1.1.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   use-sidecar@1.1.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
-      '@types/react': 18.3.3
       detect-node-es: 1.1.0
       react: 18.3.1
       tslib: 2.6.3
+    optionalDependencies:
+      '@types/react': 18.3.3
 
   util-deprecate@1.0.2: {}
 

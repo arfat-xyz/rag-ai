@@ -22,6 +22,10 @@ const HomePage = () => {
       href: "/dashboard/five",
       name: "Fifth chatbot",
     },
+    {
+      href: "/dashboard/seven",
+      name: "Seven chatbot & socket",
+    },
   ];
   return (
     <div className="w-full h-[calc(100vh-40px)] flex justify-center items-center ">

@@ -119,3 +119,22 @@ model Chatbot6 {
 
   @@map("chatbots6")
 }
+model File7 {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  blobUrl      String
+  userEmail    String
+  openAIFileId String
+  fileName     String
+  createdAt    DateTime @default(now())
+
+  @@map("files7")
+}
+
+model Chatbot7 {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  userEmail String
+  createdAt DateTime @default(now())
+
+  @@map("chatbots7")
+}
