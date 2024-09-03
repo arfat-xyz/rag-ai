@@ -15,9 +15,13 @@ datasource db {
 
 model User {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  email    String
+  email    String  @unique
   name     String
   password String?
+
+  InboxMessage InboxMessage[]
+  Conversation Conversation[]
+  Chatbot7     Chatbot7[]
 }
 
 model File {
@@ -119,6 +123,7 @@ model Chatbot6 {
 
   @@map("chatbots6")
 }
+
 model File7 {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   blobUrl      String
@@ -131,10 +136,50 @@ model File7 {
 }
 
 model Chatbot7 {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  userEmail String
-  createdAt DateTime @default(now())
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  userEmail    String
+  user         User           @relation(fields: [userEmail], references: [email])
+  createdAt    DateTime       @default(now())
+  Conversation Conversation[]
 
   @@map("chatbots7")
+}
+
+model InboxMessage {
+  id      String  @id @default(uuid()) @map("_id")
+  message String
+  User    User?   @relation(fields: [email], references: [email])
+  email   String?
+
+  createdAt DateTime @default(now())
+}
+
+enum MessageOwnerEnums {
+  Author
+  User
+  Assistant
+}
+
+model Message {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  message        String
+  messageOwner   MessageOwnerEnums
+  conversationId String            @db.ObjectId
+  conversation   Conversation      @relation(fields: [conversationId], references: [id])
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+}
+
+model Conversation {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  chatbotId    String    @db.ObjectId
+  chatbot      Chatbot7? @relation(fields: [chatbotId], references: [id])
+  adminId      String    @db.ObjectId
+  admin        User?     @relation(fields: [adminId], references: [id])
+  userId       String
+  messageArray String[]  @db.ObjectId
+  messages     Message[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }

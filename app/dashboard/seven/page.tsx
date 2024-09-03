@@ -13,6 +13,9 @@ import MessageContainer from "./MessageContainer";
 
 const DashboardTwoPage = async () => {
   const user = await getCurrentUser();
+
+  // creating an instance of PUsher which import from pusher-js
+
   if (!user?.email) {
     redirect(authOptions?.pages?.signIn || "/login");
   }

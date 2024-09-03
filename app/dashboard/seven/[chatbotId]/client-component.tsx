@@ -3,7 +3,8 @@ import { Chatbot5 } from "@prisma/client";
 import { MoveLeft, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 
 const ChatbotClientComponent = ({
@@ -25,6 +26,14 @@ const ChatbotClientComponent = ({
     // { role: "ai", content: "rahman" },
   ]);
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState("");
+  useEffect(() => {
+    let tempUserId = localStorage.getItem("userId");
+    if (!tempUserId) {
+      tempUserId = uuidv4();
+      localStorage.setItem("userId", tempUserId);
+    }
+  }, []);
   const handleSubmit = async (e: any) => {
     setLoading(true);
     e.preventDefault();
@@ -37,6 +46,7 @@ const ChatbotClientComponent = ({
         input,
         messages: messages,
         chatbotId: params.chatbotId,
+        userId,
       }),
     })
       .then((data) => data.json())

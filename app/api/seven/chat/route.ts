@@ -3,8 +3,27 @@ import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase"
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { supabaseClient } from "@/lib/open-ai-functions";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import prisma from "@/prisma";
 export async function POST(request: Request) {
-  const { input, messages, chatbotId } = await request.json();
+  const { input, messages, chatbotId, userId } = await request.json();
+
+  const adminUser = await prisma.chatbot7
+    .findUnique({
+      where: {
+        id: chatbotId,
+      },
+      select: {
+        userEmail: true,
+      },
+    })
+    .then(
+      async (res) =>
+        await prisma.user.findUnique({
+          where: {
+            email: res?.userEmail,
+          },
+        })
+    );
   const llm = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     dangerouslyAllowBrowser: true,
@@ -85,8 +104,11 @@ export async function POST(request: Request) {
     messages: chatMessages,
     temperature: 0.5,
   });
+  if (!choices?.choices[0].message?.content) {
+    return new Response("Something went wrong", { status: 403 });
+  }
 
-  console.log(choices, similaritySearchResults, messages);
+  console.log({ choices, similaritySearchResults, messages });
   // criating conversation history
   // const conv_history = messages
   //   .map((mess: { role: string; content: any }) => {
@@ -118,6 +140,39 @@ export async function POST(request: Request) {
   //   });
   //   return data[0].content;
   // }
+
+  // Trying to update it to the database
+  let conversation = await prisma.conversation.findFirst({
+    where: {
+      adminId: adminUser?.id,
+      chatbotId,
+    },
+  });
+  if (!conversation?.id) {
+    conversation = await prisma.conversation.create({
+      data: {
+        userId,
+        chatbotId,
+        adminId: adminUser?.id,
+        messageArray: [],
+      },
+    });
+  }
+  const newMessage = await prisma.message.createMany({
+    data: [
+      {
+        conversationId: conversation.id,
+        message: input,
+        messageOwner: "User",
+      },
+      {
+        conversationId: conversation.id,
+        message: choices?.choices[0].message?.content,
+        messageOwner: "Assistant",
+      },
+    ],
+  });
+  console.log({ conversation, newMessage });
 
   return Response.json({ answer: choices?.choices[0].message?.content });
 }

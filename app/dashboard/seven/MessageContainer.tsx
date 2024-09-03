@@ -2,6 +2,8 @@
 import { Send } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import Pusher from "pusher-js";
+import { postData } from "./postData";
 const messages: {
   author: "User" | "Assistant" | "Admin";
   message: string;
@@ -65,15 +67,34 @@ const messages: {
 ];
 const MessageContainer = () => {
   const [message, setMessage] = useState("");
-  const lastMessageRef = useRef();
+  const [totalMessage, setTotalMessage] = useState([]);
+  const lastMessageRef = useRef<HTMLDivElement | null>(null);
+
+  const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
+    cluster: "ap2",
+  });
+
+  // Create a channel using pusher
+  const channel = pusher.subscribe("chat");
+  channel.bind("hello", function (data: any) {
+    const paredComments = JSON.parse(data.message);
+    console.log({ paredComments, data });
+    setTotalMessage((prev) => [...prev, paredComments]);
+  });
   useEffect(() => {
     setTimeout(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [messages]);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.set("message", message);
+    await postData(formData)
+      .then((res) => console.log({ res }))
+      .catch((e) => console.log({ e }));
+    setMessage("");
   };
 
   return (
@@ -116,7 +137,7 @@ const MessageContainer = () => {
                       ? "bg-blue-500"
                       : message.author === "Assistant"
                       ? "bg-customSecondary"
-                      : ""
+                      : "`"
                   } pb-2`}
                 >
                   {message?.message}
