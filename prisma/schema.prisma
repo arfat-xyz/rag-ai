@@ -174,9 +174,9 @@ model Message {
 model Conversation {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   chatbotId    String    @db.ObjectId
-  chatbot      Chatbot7? @relation(fields: [chatbotId], references: [id])
+  chatbot      Chatbot7  @relation(fields: [chatbotId], references: [id])
   adminId      String    @db.ObjectId
-  admin        User?     @relation(fields: [adminId], references: [id])
+  admin        User      @relation(fields: [adminId], references: [id])
   userId       String
   messageArray String[]  @db.ObjectId
   messages     Message[]

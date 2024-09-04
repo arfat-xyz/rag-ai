@@ -7,23 +7,19 @@ import prisma from "@/prisma";
 export async function POST(request: Request) {
   const { input, messages, chatbotId, userId } = await request.json();
 
-  const adminUser = await prisma.chatbot7
-    .findUnique({
-      where: {
-        id: chatbotId,
-      },
-      select: {
-        userEmail: true,
-      },
-    })
-    .then(
-      async (res) =>
-        await prisma.user.findUnique({
-          where: {
-            email: res?.userEmail,
-          },
-        })
-    );
+  const chatbot = await prisma.chatbot7.findUnique({
+    where: {
+      id: chatbotId,
+    },
+  });
+  if (!chatbot?.id) return new Response("Chatbot not found", { status: 403 });
+  const adminUser = await prisma.user.findUnique({
+    where: {
+      email: chatbot.userEmail,
+    },
+  });
+  console.log({ adminUser, chatbot });
+  if (!adminUser?.id) return new Response("User not found", { status: 403 });
   const llm = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     dangerouslyAllowBrowser: true,
@@ -148,12 +144,13 @@ export async function POST(request: Request) {
       chatbotId,
     },
   });
+  console.log({ adminId: adminUser });
   if (!conversation?.id) {
     conversation = await prisma.conversation.create({
       data: {
         userId,
-        chatbotId,
-        adminId: adminUser?.id,
+        chatbotId, // This should link to an existing Chatbot7 record
+        adminId: adminUser?.id as string,
         messageArray: [],
       },
     });
