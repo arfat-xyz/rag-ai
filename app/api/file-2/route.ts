@@ -12,7 +12,6 @@ export async function DELETE(request: Request) {
     if (!session?.user?.email) {
       return new Response("Unauthorized", { status: 403 });
     }
-    console.log("arfat");
     const prismaDelete = await prisma.file2.delete({
       where: {
         id: id,

@@ -4,6 +4,32 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { supabaseClient } from "@/lib/open-ai-functions";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import prisma from "@/prisma";
+import { pusherServer } from "@/lib/pusher";
+export async function GET(request: Request) {
+  // const {
+  //   query: { id },
+  // } = request;
+  const url = new URL(request.url);
+  const searchParams = new URLSearchParams(url.searchParams);
+  const id = searchParams.get("id");
+  const getAllConversation = await prisma.conversation.findUnique({
+    where: {
+      id: id as string,
+    },
+    include: { messages: true },
+  });
+  const messagses = getAllConversation?.messages.map((m) => ({
+    content: m.message,
+    role:
+      m.messageOwner === "Assistant"
+        ? "assistant"
+        : m.messageOwner === "Author"
+        ? "author"
+        : "user",
+    id: m.id,
+  }));
+  return Response.json({ messagses });
+}
 export async function POST(request: Request) {
   const { input, messages, chatbotId, userId } = await request.json();
 
@@ -12,14 +38,7 @@ export async function POST(request: Request) {
       id: chatbotId,
     },
   });
-  if (!chatbot?.id) return new Response("Chatbot not found", { status: 403 });
-  const adminUser = await prisma.user.findUnique({
-    where: {
-      email: chatbot.userEmail,
-    },
-  });
-  console.log({ adminUser, chatbot });
-  if (!adminUser?.id) return new Response("User not found", { status: 403 });
+  // if (!adminUser?.id) return new Response("User not found", { status: 403 });
   const llm = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     dangerouslyAllowBrowser: true,
@@ -139,23 +158,19 @@ export async function POST(request: Request) {
 
   // Trying to update it to the database
   let conversation = await prisma.conversation.findFirst({
-    where: {
-      adminId: adminUser?.id,
-      chatbotId,
-    },
+    where: { adminEmail: chatbot?.userEmail, userId, chatbotId },
   });
-  console.log({ adminId: adminUser });
   if (!conversation?.id) {
     conversation = await prisma.conversation.create({
       data: {
         userId,
         chatbotId, // This should link to an existing Chatbot7 record
-        adminId: adminUser?.id as string,
+        adminEmail: chatbot?.userEmail as string,
         messageArray: [],
       },
     });
   }
-  const newMessage = await prisma.message.createMany({
+  const assistantMessage = await prisma.message.createMany({
     data: [
       {
         conversationId: conversation.id,
@@ -169,7 +184,25 @@ export async function POST(request: Request) {
       },
     ],
   });
-  console.log({ conversation, newMessage });
+
+  const addedConversation = await prisma.conversation.findFirst({
+    where: {
+      id: conversation.id,
+    },
+    include: { messages: true },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  // console.log({ addedConversation: addedConversation?.messages });
+  pusherServer.trigger("message-chat", `${conversation?.id}`, {
+    data: JSON.stringify({
+      user: { message: input },
+      assistant: {
+        message: choices?.choices[0].message?.content,
+      },
+    }),
+  });
 
   return Response.json({ answer: choices?.choices[0].message?.content });
 }

@@ -37,7 +37,6 @@ export async function DELETE(request: Request) {
       .delete() // Use '*' to select all columns
       .contains("metadata", { chatbotId: id }); // JSONB filter
 
-    console.log({ id, data, error });
     await prisma.chatbot5.delete({
       where: {
         id: id,

@@ -53,19 +53,19 @@ export async function POST(request: Request) {
   // creating retriever for getting related data from db
   const retriever = vectorStore.asRetriever();
   const dataExtra = await vectorStore.similaritySearch(input, 3, { chatbotId });
-  console.log(
-    {
-      chatbotId,
-      input,
-      dataExtra: Array.prototype.slice.call(dataExtra, 0),
-    },
-    await prisma.chatbot.findUnique({
-      where: {
-        id: chatbotId,
-      },
-    }),
-    "dataExtra"
-  );
+  // console.log(
+  //   {
+  //     chatbotId,
+  //     input,
+  //     dataExtra: Array.prototype.slice.call(dataExtra, 0),
+  //   },
+  //   await prisma.chatbot.findUnique({
+  //     where: {
+  //       id: chatbotId,
+  //     },
+  //   }),
+  //   "dataExtra"
+  // );
 
   const standaloneQuestionChain = RunnableSequence.from([
     standaloneQuestionPrompt,
@@ -97,6 +97,5 @@ export async function POST(request: Request) {
     question: input,
     conv_history,
   });
-  console.log(response, "aasdfasdfasdf");
   return Response.json({ answer: response });
 }

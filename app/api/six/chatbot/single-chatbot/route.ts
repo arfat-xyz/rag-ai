@@ -15,7 +15,6 @@ export async function DELETE(request: Request) {
       .from("documents5_1")
       .delete()
       .filter("metadata.chatbotId", "eq", id);
-    console.log(deleteFromVector);
     await prisma.chatbot5.delete({
       where: {
         id: id,

@@ -4,89 +4,95 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import Pusher from "pusher-js";
 import { postData } from "./postData";
-const messages: {
-  author: "User" | "Assistant" | "Admin";
-  message: string;
-}[] = [
-  {
-    author: "User",
-    message: "hi",
-  },
-  {
-    author: "Assistant",
-    message: "How are you",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "Admin",
-    message: "What do you want",
-  },
-  {
-    author: "User",
-    message: "hi",
-  },
-];
+import SelectedConversationContext from "./conversation-context-provider";
+import useGetMessages from "./getUseMessages";
+// const messages: {
+//   author: "User" | "Assistant" | "Admin";
+//   message: string;
+// }[] = [
+//   {
+//     author: "User",
+//     message: "hi",
+//   },
+//   {
+//     author: "Assistant",
+//     message: "How are you",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "Admin",
+//     message: "What do you want",
+//   },
+//   {
+//     author: "User",
+//     message: "hi",
+//   },
+// ];
 const MessageContainer = () => {
   const [message, setMessage] = useState("");
   const [totalMessage, setTotalMessage] = useState([]);
   const lastMessageRef = useRef<HTMLDivElement | null>(null);
-
-  const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
-    cluster: "ap2",
-  });
+  const { messages, loading } = useGetMessages();
+  // const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
+  //   cluster: "ap2",
+  // });
 
   // Create a channel using pusher
-  const channel = pusher.subscribe("chat");
-  channel.bind("hello", function (data: any) {
-    const paredComments = JSON.parse(data.message);
-    console.log({ paredComments, data });
-    setTotalMessage((prev) => [...prev, paredComments]);
-  });
+  // const channel = pusher.subscribe("chat");
+  // channel.bind("hello", function (data: any) {
+  //   const paredComments = JSON.parse(data.message);
+  //   console.log({ paredComments, data });
+  //   setTotalMessage((prev) => [...prev, paredComments]);
+  // });
   useEffect(() => {
     setTimeout(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [messages]);
-
+  // const getAllMessages = async () => {
+  //   await fetch(`api/seven/chat?id=${selectedConversation}`).then((res) =>
+  //     res.json()
+  //   );
+  // };
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const formData = new FormData();
@@ -114,37 +120,39 @@ const MessageContainer = () => {
         </div>
 
         <div className="px-4 flex-1 overflow-auto">
-          {messages.map((message, i) => (
-            <div key={i} className="h-auto" ref={lastMessageRef}>
-              <div
-                className={`chat ${
-                  message.author === "User" ? "chat-end" : "chat-start"
-                }`}
-              >
-                <div className="chat-image avatar">
-                  <div className="w-10 rounded-full">
-                    <Image
-                      width={48}
-                      height={48}
-                      alt="Tailwind CSS chat bubble component"
-                      src={`https://avatar.iran.liara.run/public/boy?username=arfat`}
-                    />
+          {messages?.length
+            ? messages.map((message, i) => (
+                <div key={i} className="h-auto" ref={lastMessageRef}>
+                  <div
+                    className={`chat ${
+                      message?.role === "user" ? "chat-end" : "chat-start"
+                    }`}
+                  >
+                    <div className="chat-image avatar">
+                      <div className="w-10 rounded-full">
+                        <Image
+                          width={48}
+                          height={48}
+                          alt="Tailwind CSS chat bubble component"
+                          src={`https://avatar.iran.liara.run/public/boy?username=arfat`}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`chat-bubble text-white ${
+                        message.role === "user"
+                          ? "bg-blue-500"
+                          : message.role === "assistant"
+                          ? "bg-customSecondary"
+                          : "`"
+                      } pb-2`}
+                    >
+                      {message?.content}
+                    </div>
                   </div>
                 </div>
-                <div
-                  className={`chat-bubble text-white ${
-                    message.author === "User"
-                      ? "bg-blue-500"
-                      : message.author === "Assistant"
-                      ? "bg-customSecondary"
-                      : "`"
-                  } pb-2`}
-                >
-                  {message?.message}
-                </div>
-              </div>
-            </div>
-          ))}
+              ))
+            : "no catting"}
         </div>
         <form className="px-4 my-3" onSubmit={handleSubmit}>
           <div className="w-full relative">

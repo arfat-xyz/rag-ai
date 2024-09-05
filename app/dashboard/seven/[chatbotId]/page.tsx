@@ -4,7 +4,6 @@ import prisma from "@/prisma";
 import { redirect } from "next/navigation";
 
 const page = async ({ params }: { params: { chatbotId: string } }) => {
-  console.log(params);
   const chatbotData = await prisma.chatbot7.findUnique({
     where: {
       id: params.chatbotId,
@@ -13,7 +12,6 @@ const page = async ({ params }: { params: { chatbotId: string } }) => {
   if (!chatbotData?.id) {
     redirect("/deshboard/seven");
   }
-  console.log(chatbotData);
   return (
     <div>
       <ChatbotClientComponent

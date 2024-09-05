@@ -36,13 +36,11 @@ export async function POST(request: Request) {
             return rest;
           })
         );
-        console.log(pdfDocs);
         const store = new SupabaseVectorStore(new OpenAIEmbeddings(), {
           client: supabaseClient,
           tableName: "documents3",
         });
         await store.addDocuments(pdfDocs).then((res) => {
-          console.log(res, pdfDocs, pdfDocs.length);
         });
         // const store2 = new SupabaseVectorStore(new OpenAIEmbeddings(), {
         //   client: supabaseClient,

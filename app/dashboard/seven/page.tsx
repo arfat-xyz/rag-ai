@@ -8,8 +8,7 @@ import prisma from "@/prisma";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ChatLinkComponent from "./chatLinkComponent";
-import Conversation from "./conversationComponent";
-import MessageContainer from "./MessageContainer";
+import AllInboxClient from "./all-inbox-client";
 
 const DashboardTwoPage = async () => {
   const user = await getCurrentUser();
@@ -27,6 +26,11 @@ const DashboardTwoPage = async () => {
   const chatbots = await prisma.chatbot7.findMany({
     where: {
       userEmail: user?.email,
+    },
+  });
+  const allConversation = await prisma.conversation.findMany({
+    where: {
+      adminEmail: user?.email,
     },
   });
   return (
@@ -119,29 +123,7 @@ const DashboardTwoPage = async () => {
             </>
           )}
         </div>
-        <div className="w-full min-h-24 bg-gray-100  p-4 mt-8 rounded-lg">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl">All Inboxed</h1>
-          </div>
-          <div className="flex gap-9 sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden w-auto bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-            <div className="py-2 flex flex-col overflow-auto">
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-            </div>
-            <MessageContainer />
-          </div>
-        </div>
+        <AllInboxClient />
       </div>
     </>
   );

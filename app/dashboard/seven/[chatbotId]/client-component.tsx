@@ -6,7 +6,10 @@ import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
-
+interface MessagesInterface {
+  role: "user" | "assistant" | "author";
+  content: string;
+}
 const ChatbotClientComponent = ({
   params,
   chatbotData,
@@ -16,9 +19,7 @@ const ChatbotClientComponent = ({
   chatbotData: Chatbot5;
   value: string;
 }) => {
-  const [messages, setMessages] = useState<
-    { role: "user" | "assistant"; content: string }[]
-  >([
+  const [messages, setMessages] = useState<MessagesInterface[]>([
     // {
     //   role: "user",
     //   content: "arfat",
@@ -33,6 +34,7 @@ const ChatbotClientComponent = ({
       tempUserId = uuidv4();
       localStorage.setItem("userId", tempUserId);
     }
+    setUserId(tempUserId);
   }, []);
   const handleSubmit = async (e: any) => {
     setLoading(true);
@@ -62,7 +64,7 @@ const ChatbotClientComponent = ({
       <div className="w-full h-[100vh-30px] flex justify-center items-center">
         <div className="w-full md:w-[96] border p-4 dark:bg-white dark:text-black relative">
           <Link
-            href={"/dashboard/five"}
+            href={"/dashboard/seven"}
             className="absolute top-0 left-0 border rounded-full p-1 w-10 h-10 bg-white flex justify-center items-center"
           >
             {" "}

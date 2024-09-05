@@ -20,7 +20,6 @@ model User {
   password String?
 
   InboxMessage InboxMessage[]
-  Conversation Conversation[]
   Chatbot7     Chatbot7[]
 }
 
@@ -175,8 +174,7 @@ model Conversation {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
   chatbotId    String    @db.ObjectId
   chatbot      Chatbot7  @relation(fields: [chatbotId], references: [id])
-  adminId      String    @db.ObjectId
-  admin        User      @relation(fields: [adminId], references: [id])
+  adminEmail   String
   userId       String
   messageArray String[]  @db.ObjectId
   messages     Message[]

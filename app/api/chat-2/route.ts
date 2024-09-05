@@ -57,7 +57,6 @@ export async function POST(request: Request) {
   const dataExtra = await vectorStore.similaritySearch(input, 1, {
     chatbotid: chatbotId,
   });
-  console.log({ chatbotId, input, dataExtra }, "dataExtra");
 
   const standaloneQuestionChain = RunnableSequence.from([
     standaloneQuestionPrompt,
@@ -89,6 +88,5 @@ export async function POST(request: Request) {
     question: input,
     conv_history,
   });
-  console.log(response, "aasdfasdfasdf");
   return Response.json({ answer: response });
 }
