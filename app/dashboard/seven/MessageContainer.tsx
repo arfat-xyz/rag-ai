@@ -6,6 +6,8 @@ import Pusher from "pusher-js";
 import { postData } from "./postData";
 import SelectedConversationContext from "./conversation-context-provider";
 import useGetMessages from "./getUseMessages";
+import { pusherClient } from "@/lib/pusher";
+import useConversation from "./useConversation";
 // const messages: {
 //   author: "User" | "Assistant" | "Admin";
 //   message: string;
@@ -71,7 +73,8 @@ const MessageContainer = () => {
   const [message, setMessage] = useState("");
   const [totalMessage, setTotalMessage] = useState([]);
   const lastMessageRef = useRef<HTMLDivElement | null>(null);
-  const { messages, loading } = useGetMessages();
+  const { messages, setMessages, loading } = useGetMessages();
+  const { selectedConversation } = useConversation();
   // const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
   //   cluster: "ap2",
   // });
@@ -83,11 +86,27 @@ const MessageContainer = () => {
   //   console.log({ paredComments, data });
   //   setTotalMessage((prev) => [...prev, paredComments]);
   // });
+
   useEffect(() => {
     setTimeout(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }, [messages]);
+  const channel = pusherClient.subscribe("message-chat");
+  if (selectedConversation?.id) {
+    channel.bind(selectedConversation?.id as string, async (data: any) => {
+      const parsedData = await JSON.parse(data?.data)?.data;
+      console.log(parsedData, typeof parsedData);
+      if (
+        parsedData?.length ||
+        parsedData[0]?.role === "user" ||
+        parsedData[0]?.role === "assistant"
+      ) {
+        setMessages([...messages, ...parsedData]);
+      }
+    });
+  }
+  // return () => pusherClient.unsubscribe("message-chat");
   // const getAllMessages = async () => {
   //   await fetch(`api/seven/chat?id=${selectedConversation}`).then((res) =>
   //     res.json()
@@ -96,7 +115,9 @@ const MessageContainer = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const formData = new FormData();
+    if (!selectedConversation?.id) return;
     formData.set("message", message);
+    formData.set("id", selectedConversation?.id);
     await postData(formData)
       .then((res) => console.log({ res }))
       .catch((e) => console.log({ e }));
@@ -115,7 +136,7 @@ const MessageContainer = () => {
           <br />
           <span className="label-text">Username:</span>{" "}
           <span className="text-gray-900 font-bold">
-            {"selectedConversation?.username"}
+            {"selectedConversation?.username"} eta all inbox er
           </span>
         </div>
 

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
+import { pusherClient } from "@/lib/pusher";
+import useConversation from "../useConversation";
 interface MessagesInterface {
   role: "user" | "assistant" | "author";
   content: string;
@@ -14,10 +16,12 @@ const ChatbotClientComponent = ({
   params,
   chatbotData,
   value,
+  conversationId,
 }: {
   params: { chatbotId: string };
   chatbotData: Chatbot5;
   value: string;
+  conversationId: string;
 }) => {
   const [messages, setMessages] = useState<MessagesInterface[]>([
     // {
@@ -28,6 +32,7 @@ const ChatbotClientComponent = ({
   ]);
   const [loading, setLoading] = useState(false);
   const [userId, setUserId] = useState("");
+  const { selectedConversation } = useConversation();
   useEffect(() => {
     let tempUserId = localStorage.getItem("userId");
     if (!tempUserId) {
@@ -36,11 +41,25 @@ const ChatbotClientComponent = ({
     }
     setUserId(tempUserId);
   }, []);
+  const channel = pusherClient.subscribe("message-chat");
+  console.log(selectedConversation?.id);
+  if (conversationId) {
+    channel.bind(conversationId, async (data: any) => {
+      const parsedData = await JSON.parse(data?.data).data;
+      console.log({ parsedData });
+      if (parsedData[0].role === "author" || parsedData[0].role === "author") {
+        setMessages([...messages, ...parsedData]);
+      }
+    });
+  }
   const handleSubmit = async (e: any) => {
     setLoading(true);
     e.preventDefault();
     const input = e.target.userInput.value;
-    setMessages((prev) => [...prev, { role: "user", content: input }]);
+    setMessages((prev) => {
+      let x = prev.filter((m) => m.role !== "author");
+      return [...x, { role: "user", content: input }];
+    });
     e.target.userInput.value = "";
     const answer = await fetch(`/api/${value}/chat`, {
       method: "POST",

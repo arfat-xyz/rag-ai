@@ -5,6 +5,7 @@ import { supabaseClient } from "@/lib/open-ai-functions";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import prisma from "@/prisma";
 import { pusherServer } from "@/lib/pusher";
+import { v4 } from "uuid";
 export async function GET(request: Request) {
   // const {
   //   query: { id },
@@ -123,7 +124,7 @@ export async function POST(request: Request) {
     return new Response("Something went wrong", { status: 403 });
   }
 
-  console.log({ choices, similaritySearchResults, messages });
+  // console.log({ choices, similaritySearchResults, messages });
   // criating conversation history
   // const conv_history = messages
   //   .map((mess: { role: string; content: any }) => {
@@ -196,13 +197,22 @@ export async function POST(request: Request) {
   });
   // console.log({ addedConversation: addedConversation?.messages });
   pusherServer.trigger("message-chat", `${conversation?.id}`, {
-    data: JSON.stringify({
-      user: { message: input },
-      assistant: {
-        message: choices?.choices[0].message?.content,
-      },
-    }),
+    data: `${JSON.stringify({
+      data: [
+        {
+          id: v4(),
+          role: "user",
+          content: input,
+        },
+        {
+          id: v4(),
+          role: "assistant",
+          content: choices?.choices[0].message?.content,
+        },
+      ],
+    })}\n\n`,
   });
+  console.log(conversation?.id);
 
   return Response.json({ answer: choices?.choices[0].message?.content });
 }
