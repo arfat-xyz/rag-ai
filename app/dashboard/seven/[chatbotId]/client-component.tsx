@@ -56,16 +56,18 @@ const ChatbotClientComponent = ({
     setLoading(true);
     e.preventDefault();
     const input = e.target.userInput.value;
-    setMessages((prev) => {
-      let x = prev.filter((m) => m.role !== "author");
-      return [...x, { role: "user", content: input }];
-    });
+    // setMessages((prev) => {
+    //   let x = prev.filter((m) => m.role !== "author");
+    //   console.log(x);
+    //   return [...x, { role: "user", content: input }];
+    // });
     e.target.userInput.value = "";
+    let x = messages.filter((m) => m.role !== "author");
     const answer = await fetch(`/api/${value}/chat`, {
       method: "POST",
       body: JSON.stringify({
         input,
-        messages: messages,
+        messages: x,
         chatbotId: params.chatbotId,
         userId,
       }),

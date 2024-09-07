@@ -29,7 +29,7 @@ const page = async ({ params }: { params: { chatbotId: string } }) => {
         params={params}
         chatbotData={chatbotData}
         value={"seven"}
-        conversationId={conversationId}
+        conversationId={conversationId as string}
       />
     </div>
   );
