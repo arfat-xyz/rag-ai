@@ -24,12 +24,12 @@ const HomePage = () => {
     },
     {
       href: "/dashboard/seven",
-      name: "Seven chatbot & socket",
+      name: "Seven chatbot with pusher inbox",
     },
-    {
-      href: "/dashboard/inbox",
-      name: "Pusher inbox",
-    },
+    // {
+    //   href: "/dashboard/inbox",
+    //   name: "Pusher inbox",
+    // },
   ];
   return (
     <div className="w-full h-[calc(100vh-40px)] flex justify-center items-center ">
