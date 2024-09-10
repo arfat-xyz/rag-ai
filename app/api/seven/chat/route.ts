@@ -30,7 +30,29 @@ export async function GET(request: Request) {
     id: m.id,
   }));
   return Response.json({ messagses });
-}
+} // using pusher send data for real time chatting
+const pushToRealTime = async (
+  conversationId: string,
+  userText: string,
+  botText: string
+) => {
+  pusherServer.trigger("message-chat", `${conversationId}`, {
+    data: `${JSON.stringify({
+      data: [
+        {
+          id: v4(),
+          role: "user",
+          content: userText,
+        },
+        {
+          id: v4(),
+          role: "assistant",
+          content: botText,
+        },
+      ],
+    })}\n\n`,
+  });
+};
 export async function POST(request: Request) {
   const { input, messages, chatbotId, userId } = await request.json();
 
@@ -214,5 +236,8 @@ export async function POST(request: Request) {
   });
   console.log(conversation?.id);
 
-  return Response.json({ answer: choices?.choices[0].message?.content });
+  return Response.json({
+    answer: choices?.choices[0].message?.content,
+    conversationId: conversation.id,
+  });
 }

@@ -16,7 +16,7 @@ const page = async ({ params }: { params: { chatbotId: string } }) => {
     .findFirst({
       where: {
         chatbotId: chatbotData.id,
-        userId: `03e52303-64b0-46f1-9d61-ce0018cc9455`,
+        userId: `5b2a6ef8-79b1-4f06-b3ae-9742407acd62`,
       },
       select: {
         id: true,
