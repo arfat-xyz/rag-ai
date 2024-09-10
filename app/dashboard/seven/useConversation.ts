@@ -3,25 +3,25 @@ import { create } from "zustand";
 
 const useConversation = create<{
   selectedConversation: Conversation | null;
-  messages:
-    | {
-        role: "user" | "assistant" | "author";
-        id: string;
-        content: string;
-      }[]
-    | [];
-}>((set) => ({
-  selectedConversation: null,
-  setSelectedConversation: (selectedConversation: Conversation) =>
-    set({ selectedConversation }),
-  messages: [],
+  setSelectedConversation: (selectedConversation: Conversation) => void; // Explicitly typing the function
+  messages: {
+    role: "user" | "assistant" | "author";
+    id: string;
+    content: string;
+  }[];
   setMessages: (
     messages: {
       role: "user" | "assistant" | "author";
       id: string;
       content: string;
     }[]
-  ) => set({ messages }),
+  ) => void;
+}>((set) => ({
+  selectedConversation: null,
+  setSelectedConversation: (selectedConversation) =>
+    set({ selectedConversation }),
+  messages: [],
+  setMessages: (messages) => set({ messages }),
 }));
 
 export default useConversation;
