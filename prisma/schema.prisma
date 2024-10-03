@@ -21,6 +21,10 @@ model User {
 
   InboxMessage InboxMessage[]
   Chatbot7     Chatbot7[]
+
+  GoogleCalenderChatbot GoogleCalenderChatbot[]
+
+  GoogleCalenderInboxMessage GoogleCalenderInboxMessage[]
 }
 
 model File {
@@ -180,4 +184,58 @@ model Conversation {
   messages     Message[]
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+}
+
+model GoogleCalenderFile {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  blobUrl      String
+  userEmail    String
+  openAIFileId String
+  fileName     String
+  createdAt    DateTime @default(now())
+
+  @@map("GoogleCalenderfiles")
+}
+
+model GoogleCalenderChatbot {
+  id                         String                       @id @default(auto()) @map("_id") @db.ObjectId
+  name                       String
+  userEmail                  String
+  user                       User                         @relation(fields: [userEmail], references: [email])
+  createdAt                  DateTime                     @default(now())
+  GoogleCalenderConversation GoogleCalenderConversation[]
+
+  @@map("GoogleCalenderchatbots")
+}
+
+model GoogleCalenderInboxMessage {
+  id      String  @id @default(uuid()) @map("_id")
+  message String
+  User    User?   @relation(fields: [email], references: [email])
+  email   String?
+
+  createdAt DateTime @default(now())
+}
+
+model GoogleCalenderMessage {
+  id             String                     @id @default(auto()) @map("_id") @db.ObjectId
+  message        String
+  messageOwner   MessageOwnerEnums
+  conversationId String                     @db.ObjectId
+  conversation   GoogleCalenderConversation @relation(fields: [conversationId], references: [id])
+  createdAt      DateTime                   @default(now())
+  updatedAt      DateTime                   @updatedAt
+}
+
+model GoogleCalenderConversation {
+  id           String                @id @default(auto()) @map("_id") @db.ObjectId
+  chatbotId    String                @db.ObjectId
+  chatbot      GoogleCalenderChatbot @relation(fields: [chatbotId], references: [id])
+  adminEmail   String
+  userId       String
+  messageArray String[]              @db.ObjectId
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+
+  GoogleCalenderMessage GoogleCalenderMessage[]
 }

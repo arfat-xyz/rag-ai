@@ -26,10 +26,10 @@ const HomePage = () => {
       href: "/dashboard/seven",
       name: "Seven chatbot with pusher inbox",
     },
-    // {
-    //   href: "/dashboard/inbox",
-    //   name: "Pusher inbox",
-    // },
+    {
+      href: "/dashboard/google-calender",
+      name: "Google calender",
+    },
   ];
   return (
     <div className="w-full h-[calc(100vh-40px)] flex justify-center items-center ">
